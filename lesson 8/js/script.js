@@ -132,11 +132,11 @@
 //         if(!data.length) throw Error(noDataErrorMessege)
 //         formElements = data.map((el) => el);
 //     } catch (e) {
-//         if(e.messege === emptyDataErrorMessege) console.log(e);
+//         if(e.message === emptyDataErrorMessege) console.log(e);
 //         else throw new Error(noDataErrorMessege);
 //     }
 // }catch (e) {
-//     if(e.messege === noDataErrorMessege) console.log(e);
+//     if(e.message === noDataErrorMessege) console.log(e);
 //     else throw e;
 // }
 
@@ -145,5 +145,5 @@
 
 
 // } catch (e) {
-//     if(e.messege === noFormElementsMessege) console.log(e);
+//     if(e.message === noFormElementsMessege) console.log(e);
 // }
