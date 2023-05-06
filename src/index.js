@@ -1,3 +1,11 @@
 import './style.scss';
+import { asyncFunc } from './async';
 
-console.log('hello')
+// if(console.log) {
+//     console.log(2)
+// } else {
+//     console.log = ...
+//     console.log()
+// }
+
+asyncFunc()
