@@ -138,6 +138,75 @@
 			</div>
 		</div>
 	</div>
+	<div id="add-movie" class="add-movie">
+		<div class="add-movie__body">
+			<div class="add-movie__content content-add-movie">
+				<a href="" class="content-add-movie__close">X</a>
+				<div class="content-add-movie__conteiner">
+					<div class="content-add-movie__header">
+						<div class="content-add-movie__title">ADD MOVIE</div>
+					</div>
+					<div class="content-add-movie__description description">
+						<div class="description__block">
+							<div class="description__header">title</div>
+							<input type="text" class="description__elem _title">
+						</div>
+						<div class="description__block">
+							<div class="description__header">date</div>
+							<input type="date" class="description__elem _date">
+						</div>
+						<div class="description__block">
+							<div class="description__header">url</div>
+							<input type="text" class="description__elem _url" placeholder="https://">
+						</div>
+						<div class="description__block">
+							<div class="description__header">rating</div>
+							<div class="description__elem _rating">7.8</div>
+						</div>
+						<div class="description__block">
+							<div class="description__header">genre</div>
+							<div class="description__menu menu-description">
+								<div class="menu-description__title">Select Genre</div>
+								<span class="menu-description__arrow"></span>
+								<ul class="menu-description__list">
+									<li class="menu-description__item">
+										<input id="crime" class="menu-description__check" type="checkbox">
+										<label class="menu-description__label" for="crime">Crime</label>
+									</li>
+									<li class="menu-description__item">
+										<input id="documentary" class="menu-description__check" type="checkbox">
+										<label class="menu-description__label" for="documentary">Documentary</label>
+									</li>
+									<li class="menu-description__item">
+										<input id="horror" class="menu-description__check" type="checkbox">
+										<label class="menu-description__label" for="horror">Horror</label>
+									</li>
+									<li class="menu-description__item">
+										<input id="comedy" class="menu-description__check" type="checkbox">
+										<label class="menu-description__label" for="comedy">Comedy</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="description__block">
+							<div class="description__header">runtime</div>
+							<div class="description__elem _runtime">minutes</div>
+						</div>
+					</div>
+					<div class="content-add-movie__overview overview">
+						<div class="overview__title">OVERVIEW</div>
+						<textarea class="overview__description" name="" placeholder="Movie description"></textarea>
+					</div>
+					<div class="content-add-movie__footer">
+						<div class="content-add-movie__button-block button-block">
+							<button class="button-block__button _reset" type="reset">RESET</button>
+							<button class="button-block__button _submit" type="submit">SUBMIT</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script src="/src/index.js"></script>
 </body>
 

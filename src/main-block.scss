@@ -1,6 +1,12 @@
 .page__main-block {
 	margin: 43px 0 0 0;
-	padding: 0 0 0 5px;
+	padding: 0 5px;
+}
+
+@media(max-width: 723px) {
+	.page__main-block {
+		margin: 5px 0 0 0;
+	}
 }
 
 .main-block {}
@@ -313,6 +319,12 @@
 @media(max-width: 385px) {
 	.sort {
 		display: block;
+	}
+}
+
+@media(max-width: 382px) {
+	.sort {
+		padding: 0 10px 0 0px;
 	}
 }
 
