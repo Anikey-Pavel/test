@@ -52,80 +52,7 @@
 						</div>
 						<div class="content-main-block__line"></div>
 						<div class="content-main-block__subtitle">39 movies found</div>
-						<div class="content-main-block__items">
-							<div class="content-main-block__item item">
-								<div class="item__image _ibg">
-									<img src="./img/icons/pulp-fiction.png" alt="Картинка">
-								</div>
-								<div class="item__description">
-									<div class="item__text-block">
-										<div class="item__title">Pulp Fiction</div>
-										<div class="item__category">Action & Adventure</div>
-									</div>
-									<div class="item__date">2004</div>
-								</div>
-							</div>
-							<div class="content-main-block__item item">
-								<div class="item__image _ibg">
-									<img src="./img/icons/bohemian-phapsody.png" alt="Картинка">
-								</div>
-								<div class="item__description">
-									<div class="item__text-block">
-										<div class="item__title">Bohemian Rhapsody</div>
-										<div class="item__category">Drama, Biography, Music</div>
-									</div>
-									<div class="item__date">2003</div>
-								</div>
-							</div>
-							<div class="content-main-block__item item">
-								<div class="item__image _ibg">
-									<img src="./img/icons/Bill-Vol-2.png" alt="Картинка">
-								</div>
-								<div class="item__description">
-									<div class="item__text-block">
-										<div class="item__title">Kill Bill: Vol 2</div>
-										<div class="item__category">Oscar winning Movie</div>
-									</div>
-									<div class="item__date">1994</div>
-								</div>
-							</div>
-							<div class="content-main-block__item item">
-								<div class="item__image _ibg">
-									<img src="./img/icons/Avengers-War-of-Infinity.png" alt="Картинка">
-								</div>
-								<div class="item__description">
-									<div class="item__text-block">
-										<div class="item__title">Avengers: War of Infinity</div>
-										<div class="item__category">Action & Adventure</div>
-									</div>
-									<div class="item__date">2004</div>
-								</div>
-							</div>
-							<div class="content-main-block__item item">
-								<div class="item__image _ibg">
-									<img src="./img/icons/Inception.png" alt="Картинка">
-								</div>
-								<div class="item__description">
-									<div class="item__text-block">
-										<div class="item__title">Inception</div>
-										<div class="item__category">Action & Adventure</div>
-									</div>
-									<div class="item__date">2004</div>
-								</div>
-							</div>
-							<div class="content-main-block__item item">
-								<div class="item__image _ibg">
-									<img src="./img/icons/Reservoir-dogs.png" alt="Картинка">
-								</div>
-								<div class="item__description">
-									<div class="item__text-block">
-										<div class="item__title">Reservoir dogs</div>
-										<div class="item__category">Oscar winning Movie</div>
-									</div>
-									<div class="item__date">1994</div>
-								</div>
-							</div>
-						</div>
+						<div id="moviesConteiner" class="content-main-block__items"></div>
 					</div>
 					<footer class="main-block__footer footer-main-block">
 						<div class="footer-main-block _conteiner">
@@ -138,6 +65,20 @@
 			</div>
 		</div>
 	</div>
+	<template id="movie-item">			
+		<div class="content-main-block__item item">
+			<div class="item__image _ibg">
+				<img src="" alt="">
+			</div>
+			<div class="item__description">
+				<div class="item__text-block">
+					<div class="item__title">Pulp Fiction</div>
+					<div class="item__category">Action & Adventure</div>
+				</div>
+				<div class="item__date">2004</div>
+			</div>
+		</div>
+	</template>
 	<script src="/src/index.js"></script>
 </body>
 

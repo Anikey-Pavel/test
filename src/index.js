@@ -1,3 +1,8 @@
+import { createMovies } from "./components/movies";
 import "./style.scss";
 
-document.querySelector("#id");
+const initApp = () => {
+	createMovies();
+};
+
+initApp();
