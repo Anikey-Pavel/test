@@ -10,6 +10,8 @@ export const searcToObject = (searchSrtring) => {
 	return searchObject;
 };
 
+export const objToSearch = (obj) => "?page=2";
+
 export const updateSearchParams = (params) => {
 	const url = new URL(window.location);
 

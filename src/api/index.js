@@ -1,3 +1,5 @@
+import { objToSearch } from "../utils/search";
+
 const baseUrl = "http://localhost:4000/movies";
 
 const defaultParams = {
@@ -10,7 +12,8 @@ const defaultParams = {
 
 export const updateMoviesState = (params) => {};
 
-export const getMovies = (params) => fetch(baseUrl).then((data) => data.json());
+export const getMovies = (params) =>
+	fetch(`${baseUrl}${objToSearch(params)}`).then((data) => data.json());
 
 export const createMovie = (body) =>
 	fetch(baseUrl, {
