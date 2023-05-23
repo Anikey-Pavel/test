@@ -1,6 +1,7 @@
-// import defaultImage from "../../public/img/s-l1600.jpg";
 import { getMovies } from "../api";
 import { parseDate } from "../utils/components/date";
+import { addMovie } from "./addMovie";
+import { getMovie } from "../api";
 
 const container = document.getElementById("moviesConteiner");
 const template = document.getElementById("movie-item");
@@ -29,5 +30,6 @@ export const createMovies = () => {
 		const moviesElemenets = movies.map(createMovie);
 
 		container.append(...moviesElemenets);
+
 	});
 };

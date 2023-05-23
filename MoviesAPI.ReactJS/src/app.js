@@ -8,20 +8,20 @@ const swaggerApi = require('./api/swagger.api')
 const movieApi = require('./api/movie.api')
 
 const app = new Koa()
-  .use(cors())
-  .use(
-    koaSwagger({
-      routePrefix: '/api-docs',
-      swaggerOptions: {
-        url: '/swagger.yaml',
-      },
-    }),
-  )
-  .use(bodyParser())
-  .use(parseQuery)
-  .use(swaggerApi.routes())
-  .use(swaggerApi.allowedMethods())
-  .use(movieApi.routes())
-  .use(movieApi.allowedMethods())
+	.use(cors())
+	.use(
+		koaSwagger({
+			routePrefix: '/api-docs',
+			swaggerOptions: {
+				url: '/swagger.yaml',
+			},
+		}),
+	)
+	.use(bodyParser())
+	.use(parseQuery)
+	.use(swaggerApi.routes())
+	.use(swaggerApi.allowedMethods())
+	.use(movieApi.routes())
+	.use(movieApi.allowedMethods())
 
 module.exports = exports = app
