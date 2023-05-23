@@ -372,13 +372,6 @@
 	}
 }
 
-.content-main-block__line {
-	height: 1px;
-	border: 1px solid #080707;
-	background-color: #080707;
-	margin: 0 0 21px 0;
-}
-
 .content-main-block__subtitle {
 	font-weight: 400;
 	font-size: 20px;
@@ -493,4 +486,13 @@
 .footer-main-block__logo {
 	padding: 23px 0;
 	text-align: center;
+}
+
+#showMore {
+	margin: 20px auto;
+	padding: 10px;
+	background-color: #F65261;
+	color: white;
+	border-radius: 4px;
+	display: block;
 }

@@ -1,7 +1,7 @@
-import { getMovies } from "../api";
-import { parseDate } from "../utils/components/date";
-import { addMovie } from "./addMovie";
-import { getMovie } from "../api";
+// import defaultImage from
+import { getMovies } from "../../api";
+import { parseDate } from "../../utils/date";
+import { searcToObject } from "../../utils/search";
 
 const container = document.getElementById("moviesConteiner");
 const template = document.getElementById("movie-item");
@@ -25,11 +25,12 @@ const createMovie = (movie) => {
 };
 
 export const createMovies = () => {
+	const params = window.location.search;
+	console.log(searcToObject(params));
 	getMovies().then((data) => {
 		const movies = data.data;
 		const moviesElemenets = movies.map(createMovie);
 
 		container.append(...moviesElemenets);
-
 	});
 };

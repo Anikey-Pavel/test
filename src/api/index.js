@@ -1,6 +1,16 @@
 const baseUrl = "http://localhost:4000/movies";
 
-export const getMovies = () => fetch(baseUrl).then((data) => data.json());
+const defaultParams = {
+	limit: 10,
+	filter: undefined,
+	search: undefined,
+	sortBy: undefined,
+	sortOrder: "desc",
+};
+
+export const updateMoviesState = (params) => {};
+
+export const getMovies = (params) => fetch(baseUrl).then((data) => data.json());
 
 export const createMovie = (body) =>
 	fetch(baseUrl, {
