@@ -1,4 +1,5 @@
 export const createMoreButton = (container) => {
+	container = document.querySelector(".main-block__content")
 	const button = document.createElement("button");
 	button.type = "button";
 	button.id = "showMore";

@@ -1,5 +1,4 @@
 export function addMovie() {
-	// const body = document.querySelector("body");
 	const button = document.querySelector(".header-main-block__add-button");
 	const block = document.querySelector(".add-movie");
 	const buttonClose = document.querySelector(".content-add-movie__close");
@@ -24,7 +23,6 @@ export function addMovie() {
 	});
 }
 
-// addMovie();
 
 export function openList() {
 	const list = document.querySelector(".menu-description__list");
@@ -35,5 +33,3 @@ export function openList() {
 		arrow.classList.toggle("active");
 	});
 }
-
-// openList();
