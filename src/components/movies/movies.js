@@ -1,18 +1,15 @@
-// import defaultImage from
 import { getMovies } from "../../api";
 import { parseDate } from "../../utils/date";
 import { searcToObject } from "../../utils/search";
+import { createMovieItem } from "../createPage/createMovieItem";
+import { createMovieItemContainer } from "../createPage/createMovieItemContainer";
 
-// const container = document.getElementById("moviesConteiner");
-const container = document.getElementsByClassName("content-main-block__items");
-// console.log(container);
-// const template = document.getElementById("movie-item");
-const template = document.getElementsByTagName("template");
-// console.log(template)
+const container = createMovieItemContainer();
+
 const defaultPoster =
-	"https://marketplace.canva.com/EAFH3gODxw4/1/0/1131w/canva-black-%26-white-modern-mystery-forest-movie-poster-rLty9dwhGG4.jpg";
+	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTsw4j6TBoBT9tGANsMBQNeb70zfEVpJ9DkQ&usqp=CAU";
 const createMovie = (movie) => {
-	const movieElement = template.content.cloneNode(true);
+	const movieElement = createMovieItem();
 
 	movieElement.querySelector("img").src = movie.poster_path;
 	movieElement.querySelector("img").onerror = (e) => {

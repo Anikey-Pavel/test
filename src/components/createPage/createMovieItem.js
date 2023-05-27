@@ -31,5 +31,7 @@ export const createMovieItem = () => {
 	itemtextBlock.append(itemTitle);
 	itemtextBlock.append(itemCotegory);
 	itemDescription.append(itemDate);
+
+	return item;
 }
 

@@ -19,7 +19,7 @@ export const createHeader = (conteiner) => {
 	header.classList.add("main-block__header");
 	header.classList.add("header-main-block");
 	headerMainBlockTitle.classList.add("header-main-block__title");
-	headerMainBlockLogo.classList.add("eader-main-block__logo");
+	headerMainBlockLogo.classList.add("header-main-block__logo");
 	headerMainBlockAddButton.classList.add("header-main-block__add-button");
 	headerMainBlockSearch.classList.add("header-main-block__search");
 	headerMainBlockFind.classList.add("header-main-block__find");
@@ -39,7 +39,7 @@ export const createHeader = (conteiner) => {
 	background.src = "./img/icons/Bitmap.png"
 	background.alt = "background";
 
-	conteiner.append(header);
+	conteiner.prepend(header);
 	header.append(headerMainBlockTitle);
 	headerMainBlockTitle.append(headerMainBlockLogo);
 	headerMainBlockLogo.append(image);

@@ -15,16 +15,11 @@ import "./style.scss";
 const initApp = () => {
 	const conteinerPage = document.querySelector(".main-block _conteiner");
 
-	createConteiner();
 	createHeader(conteinerPage);
-	createContent(conteinerPage);
 	createFooter(conteinerPage);
 	createAddMovie();
-	createMovieItem();
-
 	createMovies();
 	createMoreButton();
-
 	addMovie();
 	openList();
 };

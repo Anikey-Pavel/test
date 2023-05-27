@@ -21,6 +21,3 @@ export const createFooter = (conteiner) => {
 	footerMainBlockConteiner.append(footerMainBlockLogo);
 	footerMainBlockLogo.append(img);
 }
-
-// const conteinerPage = document.querySelector(".main-block _conteiner");
-
