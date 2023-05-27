@@ -1,22 +1,20 @@
 export const createContent = (conteiner) => {
-
 	conteiner = document.querySelector("._conteiner");
 
-
-	const mainBlockContent = document.createElement("div");;
-	const contentMainBlockHeader = document.createElement("div");;
-	const contentMainBlockMenu = document.createElement("div");;
+	const mainBlockContent = document.createElement("div");
+	const contentMainBlockHeader = document.createElement("div");
+	const contentMainBlockMenu = document.createElement("div");
 	const menuList = document.createElement("ul");
 	const menuItem1 = document.createElement("li");
 	const menuItem2 = document.createElement("li");
 	const menuItem3 = document.createElement("li");
 	const menuItem4 = document.createElement("li");
 	const menuItem5 = document.createElement("li");
-	const sort = document.createElement("div");;
-	const sortText = document.createElement("div");;
-	const sortMenu = document.createElement("div");;
-	const contentMainBlockSubtitle = document.createElement("div");;
-	const contentMainBlockItems = document.createElement("div");;
+	const sort = document.createElement("div");
+	const sortText = document.createElement("div");
+	const sortMenu = document.createElement("div");
+	const contentMainBlockSubtitle = document.createElement("div");
+	const contentMainBlockItems = document.createElement("div");
 
 	mainBlockContent.classList.add("main-block__content");
 	mainBlockContent.classList.add("content-main-block");
@@ -60,6 +58,6 @@ export const createContent = (conteiner) => {
 	sort.append(sortMenu);
 	mainBlockContent.append(contentMainBlockSubtitle);
 	mainBlockContent.append(contentMainBlockItems);
-}
 
-
+	// return contentMainBlockItems;
+};

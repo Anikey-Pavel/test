@@ -1,5 +1,4 @@
 export const createMovieItem = () => {
-	const movieItem = document.createElement("template");
 	const item = document.createElement("div");
 	const itemImage = document.createElement("div");
 	const img = document.createElement("img");
@@ -9,7 +8,6 @@ export const createMovieItem = () => {
 	const itemCotegory = document.createElement("div");
 	const itemDate = document.createElement("div");
 
-	movieItem.id = "movie-item";
 	item.classList.add("content-main-block__item");
 	item.classList.add("item");
 	itemImage.classList.add("item__image");
@@ -22,8 +20,6 @@ export const createMovieItem = () => {
 
 	img.alt = "Poster";
 
-	document.body.prepend(movieItem);
-	movieItem.append(item);
 	item.append(itemImage);
 	itemImage.append(img);
 	item.append(itemDescription);
@@ -31,5 +27,6 @@ export const createMovieItem = () => {
 	itemtextBlock.append(itemTitle);
 	itemtextBlock.append(itemCotegory);
 	itemDescription.append(itemDate);
-}
 
+	return item;
+};

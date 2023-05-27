@@ -15,5 +15,6 @@ export const createConteiner = () => {
 	wrapper.append(page);
 	page.append(pageMainBlock);
 	pageMainBlock.append(mainBlockConteiner);
-}
 
+	return wrapper;
+};
