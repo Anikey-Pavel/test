@@ -33,5 +33,4 @@ export const createMovieItem = () => {
 	itemDescription.append(itemDate);
 
 	return item;
-}
-
+};

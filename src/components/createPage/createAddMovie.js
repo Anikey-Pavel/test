@@ -126,17 +126,17 @@ export const createAddMovie = () => {
 	descriptionElemRating.innerText = "7.8";
 	descriptionHeaderGenre.innerText = "genre";
 	menuDescriptionTitle.innerText = "Select Genre";
-	menuDescriptionCheckCrime.type = "checkbox"
-	labelCrime.setAttribute('for', menuDescriptionCheckCrime.id);
+	menuDescriptionCheckCrime.type = "checkbox";
+	labelCrime.setAttribute("for", menuDescriptionCheckCrime.id);
 	labelCrime.innerText = "Crime";
 	menuDescriptionCheckDocumentary.type = "checkbox";
-	labelDocumentary.setAttribute('for', menuDescriptionCheckDocumentary.id);
+	labelDocumentary.setAttribute("for", menuDescriptionCheckDocumentary.id);
 	labelDocumentary.innerText = "Documentary";
 	menuDescriptionCheckHorror.type = "checkbox";
-	labelHorror.setAttribute('for', menuDescriptionCheckHorror.id);
+	labelHorror.setAttribute("for", menuDescriptionCheckHorror.id);
 	labelHorror.innerText = "Horror";
 	menuDescriptionCheckComedy.type = "checkbox";
-	labelComedy.setAttribute('for', menuDescriptionCheckComedy.id);
+	labelComedy.setAttribute("for", menuDescriptionCheckComedy.id);
 	labelComedy.innerText = "Comedy";
 	descriptionHeaderRuntime.innerText = "runtime";
 	descriptionElemRuntime.innerText = "minutes";
@@ -193,5 +193,4 @@ export const createAddMovie = () => {
 	contentAddMovieFooter.append(buttonBlock);
 	buttonBlock.append(buttonReset);
 	buttonBlock.append(buttonSubmit);
-}
-
+};

@@ -4,18 +4,32 @@ export const searcToObject = (searchSrtring) => {
 	const params = separetedString.split("&");
 	params.forEach((element) => {
 		const [key, value] = element.split("=");
-		searchObject[key] = value;
+		const parseentValue = parseInt(value, 10);
+		searchObject[key] = parseentValue || value;
 	});
 
 	return searchObject;
 };
 
-export const objToSearch = (obj) => "?page=2";
+export const objectToSearch = (params) => {
+	let searchString = "";
+	if (!params) return searchString;
+
+	Object.entries(params).forEach(([key, value], index) => {
+		if (value) {
+			const symbol = !index ? "?" : "&";
+			searchString += `${symbol}${key}=${value}`;
+		}
+	});
+	return searchString;
+};
+
+export const getSearchParams = () => searcToObject(window.location.search);
 
 export const updateSearchParams = (params) => {
 	const url = new URL(window.location);
-
 	if (params.filter) url.searchParams.set("filter", params.filter);
+	if (params.limit) url.searchParams.set("limit", params.limit);
 	if (params.search) url.searchParams.set("search", params.search);
 	if (params.sortBy) url.searchParams.set("sortBy", params.sortBy);
 	if (params.sortOrder) url.searchParams.set("sortOrder", params.sortOrder);

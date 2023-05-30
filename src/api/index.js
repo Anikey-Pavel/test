@@ -1,19 +1,25 @@
-import { objToSearch } from "../utils/search";
+import {
+	getSearchParams,
+	objectToSearch,
+	updateSearchParams,
+} from "../utils/search";
 
 const baseUrl = "http://localhost:4000/movies";
 
+export const defaultLimit = 10;
+
 const defaultParams = {
-	limit: 10,
+	limit: defaultLimit,
 	filter: undefined,
 	search: undefined,
 	sortBy: undefined,
 	sortOrder: "desc",
 };
 
-export const updateMoviesState = (params) => {};
-
 export const getMovies = (params) =>
-	fetch(`${baseUrl}${objToSearch(params)}`).then((data) => data.json());
+	fetch(`${baseUrl}${objectToSearch(params || defaultParams)}`).then((data) =>
+		data.json()
+	);
 
 export const createMovie = (body) =>
 	fetch(baseUrl, {
@@ -33,3 +39,8 @@ export const deleteMovie = (id) =>
 	fetch(`${baseUrl}/${id}`, {
 		method: "DELETE",
 	});
+
+export const updateMoviesState = (params) => {
+	if (params) updateSearchParams(params);
+	return getMovies(getSearchParams() || defaultParams);
+};
