@@ -1,6 +1,4 @@
-export const createHeader = (conteiner) => {
-
-	conteiner = document.querySelector("._conteiner");
+export const createHeader = (container) => {
 
 	const header = document.createElement("header");
 	const headerMainBlockTitle = document.createElement("div");
@@ -39,7 +37,7 @@ export const createHeader = (conteiner) => {
 	background.src = "./img/icons/Bitmap.png"
 	background.alt = "background";
 
-	conteiner.prepend(header);
+	container.prepend(header);
 	header.append(headerMainBlockTitle);
 	headerMainBlockTitle.append(headerMainBlockLogo);
 	headerMainBlockLogo.append(image);

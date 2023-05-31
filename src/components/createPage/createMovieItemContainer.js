@@ -1,7 +1,4 @@
-import { createContent } from "./createContent";
-
 export const createMovieItemContainer = (container) => {
-	container = createContent();
 
 	const contentMainBlockItems = document.createElement("div");
 
@@ -10,5 +7,4 @@ export const createMovieItemContainer = (container) => {
 
 	container.append(contentMainBlockItems);
 
-	return contentMainBlockItems
 }

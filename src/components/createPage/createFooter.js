@@ -1,6 +1,4 @@
-export const createFooter = (conteiner) => {
-
-	conteiner = document.querySelector("._conteiner");
+export const createFooter = (container) => {
 
 	const footer = document.createElement("footer");
 	const footerMainBlockConteiner = document.createElement("div");
@@ -16,7 +14,7 @@ export const createFooter = (conteiner) => {
 	img.src = "./img/icons/logo.svg";
 	img.alt = "icon";
 
-	conteiner.append(footer);
+	container.append(footer);
 	footer.append(footerMainBlockConteiner);
 	footerMainBlockConteiner.append(footerMainBlockLogo);
 	footerMainBlockLogo.append(img);

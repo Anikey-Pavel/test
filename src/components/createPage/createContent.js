@@ -1,8 +1,4 @@
-import { createConteiner } from "./createConteiner";
-
-export const createContent = (conteiner) => {
-
-	conteiner = createConteiner();
+export const createContent = (container) => {
 
 	const mainBlockContent = document.createElement("div");
 	const contentMainBlockHeader = document.createElement("div");
@@ -44,7 +40,7 @@ export const createContent = (conteiner) => {
 	sortMenu.innerText = "Release date";
 	contentMainBlockSubtitle.innerText = "39 movies found";
 
-	conteiner.append(mainBlockContent);
+	container.append(mainBlockContent);
 	mainBlockContent.append(contentMainBlockHeader);
 	contentMainBlockHeader.append(contentMainBlockMenu);
 	contentMainBlockMenu.append(menuList);
@@ -58,7 +54,6 @@ export const createContent = (conteiner) => {
 	sort.append(sortMenu);
 	mainBlockContent.append(contentMainBlockSubtitle);
 
-	return mainBlockContent
 }
 
 
