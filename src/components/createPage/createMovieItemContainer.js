@@ -7,4 +7,5 @@ export const createMovieItemContainer = (container) => {
 
 	container.append(contentMainBlockItems);
 
+	return contentMainBlockItems
 }

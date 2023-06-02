@@ -54,6 +54,7 @@ export const createContent = (container) => {
 	sort.append(sortMenu);
 	mainBlockContent.append(contentMainBlockSubtitle);
 
+	return mainBlockContent
 }
 
 

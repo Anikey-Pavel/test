@@ -16,5 +16,6 @@ export const createConteiner = () => {
 	page.append(pageMainBlock);
 	pageMainBlock.append(mainBlockConteiner);
 
+	return mainBlockConteiner
 }
 

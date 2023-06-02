@@ -14,27 +14,14 @@ const initApp = () => {
 
 
 	createAddMovie();
-	createConteiner();
-
-	const conteinerPage = document.querySelector(".main-block._conteiner");
-
+	const conteinerPage = createConteiner();
 	createHeader(conteinerPage);
-	createContent(conteinerPage);
+	const containerForItems = createContent(conteinerPage);
 	createFooter(conteinerPage);
-
-	const containerForItems = document.querySelector(".main-block__content");
-
-	createMovieItemContainer(containerForItems);
-
-	const containerForMovies = document.querySelector(".content-main-block__items");
-
+	const containerForMovies = createMovieItemContainer(containerForItems);
 	createMovies(containerForMovies);
 	createMovieItem(containerForMovies);
-
-	const containerForButton = document.querySelector(".main-block__content");
-
-	createMoreButton(containerForButton);
-
+	createMoreButton(containerForItems);
 	addMovie();
 	openList();
 };
