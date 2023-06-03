@@ -1,6 +1,5 @@
 import { defaultLimit, updateMoviesState } from "../../api";
 import { getSearchParams } from "../../utils/search";
-import { createMovieCard } from "../movies/movies";
 
 export const createMoreButton = (container) => {
 	const button = document.createElement("button");
@@ -10,15 +9,7 @@ export const createMoreButton = (container) => {
 
 	const onClick = () => {
 		const currentLimit = getSearchParams()?.limit || defaultLimit;
-		updateMoviesState({ limit: currentLimit + defaultLimit }).then((data) => {
-			console.log(data)
-			const movies = data.data;
-			const moviesElemenets = movies.map(createMovieCard);
-
-			const moviesContainer = document.querySelector("#moviesConteiner");
-			moviesContainer.innerHTML = "";
-			moviesContainer.append(...moviesElemenets);
-		});
+		updateMoviesState({ limit: currentLimit + defaultLimit })
 	};
 
 	button.addEventListener("click", onClick);

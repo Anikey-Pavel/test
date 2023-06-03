@@ -23,7 +23,6 @@ export function addMovie() {
 	});
 }
 
-
 export function openList() {
 	const list = document.querySelector(".menu-description__list");
 	const arrow = document.querySelector(".menu-description__arrow");

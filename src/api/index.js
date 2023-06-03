@@ -4,6 +4,8 @@ import {
 	updateSearchParams,
 } from "../utils/search";
 
+import { createMovieCard } from "../components/movies/movies";
+
 const baseUrl = "http://localhost:4000/movies";
 
 export const defaultLimit = 10;
@@ -42,5 +44,26 @@ export const deleteMovie = (id) =>
 
 export const updateMoviesState = (params) => {
 	if (params) updateSearchParams(params);
-	return getMovies(getSearchParams() || defaultParams);
+	const currentParams = getSearchParams() || defaultParams;
+	return getMovies(currentParams).then((data) => {
+		const movies = data.data;
+		const moviesElemenets = movies.map(createMovieCard);
+
+		const moviesContainer = document.querySelector("#moviesConteiner");
+		moviesContainer.innerHTML = "";
+		moviesContainer.append(...moviesElemenets);
+
+		const moviesCountContainer = document.querySelector("#moviesCounter");
+		if (moviesCountContainer) {
+			moviesCountContainer.textContent = data.totalAmount;
+		}
+
+		const showMoreButton = document.querySelector("#showMore");
+
+		if (data.totalAmount <= (currentParams.limit || defaultLimit)) {
+			showMoreButton.classList.add("hidden");
+		} else {
+			showMoreButton.classList.remove("hidden");
+		}
+	});
 };

@@ -1,5 +1,4 @@
 export const createContent = (container) => {
-
 	const mainBlockContent = document.createElement("div");
 	const contentMainBlockHeader = document.createElement("div");
 	const contentMainBlockMenu = document.createElement("div");
@@ -13,7 +12,10 @@ export const createContent = (container) => {
 	const sortText = document.createElement("div");
 	const sortMenu = document.createElement("div");
 	const contentMainBlockSubtitle = document.createElement("div");
+	const moviesCountContainer = document.createElement("span");
 
+	moviesCountContainer.id = "moviesCounter";
+	moviesCountContainer.innerText = "0";
 	mainBlockContent.classList.add("main-block__content");
 	mainBlockContent.classList.add("content-main-block");
 	contentMainBlockHeader.classList.add("content-main-block__header");
@@ -38,7 +40,7 @@ export const createContent = (container) => {
 	menuItem5.innerText = "Crime";
 	sortText.innerText = "Sort by";
 	sortMenu.innerText = "Release date";
-	contentMainBlockSubtitle.innerText = "39 movies found";
+	contentMainBlockSubtitle.append(moviesCountContainer, "movies found");
 
 	container.append(mainBlockContent);
 	mainBlockContent.append(contentMainBlockHeader);
@@ -54,7 +56,5 @@ export const createContent = (container) => {
 	sort.append(sortMenu);
 	mainBlockContent.append(contentMainBlockSubtitle);
 
-	return mainBlockContent
-}
-
-
+	return mainBlockContent;
+};

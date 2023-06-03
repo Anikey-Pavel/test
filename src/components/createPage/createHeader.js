@@ -1,5 +1,13 @@
-export const createHeader = (container) => {
+import { updateMoviesState } from "../../api";
 
+const onSearch = (e) => {
+	e.preventDefault();
+	const searchValue = new FormData(e.target).get("search");
+
+	updateMoviesState({ search: searchValue });
+};
+
+export const createHeader = (container) => {
 	const header = document.createElement("header");
 	const headerMainBlockTitle = document.createElement("div");
 	const headerMainBlockLogo = document.createElement("div");
@@ -33,9 +41,13 @@ export const createHeader = (container) => {
 	form.method = "get";
 	input.placeholder = "What do you want to watch?";
 	input.type = "text";
+	input.name = "search";
 	button.innerText = "Search";
-	background.src = "./img/icons/Bitmap.png"
+	button.type = "submit";
+	background.src = "./img/icons/Bitmap.png";
 	background.alt = "background";
+
+	form.addEventListener("submit", onSearch);
 
 	container.prepend(header);
 	header.append(headerMainBlockTitle);
@@ -50,5 +62,4 @@ export const createHeader = (container) => {
 	form.append(button);
 	header.append(headerMainBlockImage);
 	headerMainBlockImage.append(background);
-}
-
+};

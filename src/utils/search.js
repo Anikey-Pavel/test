@@ -30,7 +30,10 @@ export const updateSearchParams = (params) => {
 	const url = new URL(window.location);
 	if (params.filter) url.searchParams.set("filter", params.filter);
 	if (params.limit) url.searchParams.set("limit", params.limit);
-	if (params.search) url.searchParams.set("search", params.search);
+	if (params.search) {
+		url.searchParams.set("search", params.search);
+		url.searchParams.set("searchBy", "title");
+	}
 	if (params.sortBy) url.searchParams.set("sortBy", params.sortBy);
 	if (params.sortOrder) url.searchParams.set("sortOrder", params.sortOrder);
 
