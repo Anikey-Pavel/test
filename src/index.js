@@ -8,10 +8,18 @@ import { createMovieItemContainer } from "./components/createPage/createMovieIte
 import { createMoreButton } from "./components/moreMoviesButton/createButton";
 import { addMovie, openList } from "./components/movies/addMovie";
 import { createMovies } from "./components/movies/movies";
+import { openContextMenu } from "./components/context-menu/openContextMenu";
+import { createDeleteMovie } from "./components/createPage/createDeleteMovie";
+import { deleteMovieCard } from "./components/movies/deleteMovie";
+import { createMovieEdit } from "./components/createPage/createEditMovie";
+import { editMovie } from "./components/movies/editMovie";
+
 import "./style.scss";
 
 const initApp = () => {
+	createDeleteMovie();
 	createAddMovie();
+
 	const conteinerPage = createConteiner();
 	createHeader(conteinerPage);
 	const containerForItems = createContent(conteinerPage);
@@ -20,8 +28,13 @@ const initApp = () => {
 	createMovies(containerForMovies);
 	createMovieItem(containerForMovies);
 	createMoreButton(containerForItems);
+
 	addMovie();
 	openList();
+	// openContextMenu();
+	deleteMovieCard();
+	createMovieEdit();
+	editMovie();
 };
 
 initApp();

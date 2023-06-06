@@ -1,4 +1,4 @@
-export const createAddMovie = () => {
+export const createMovieEdit = () => {
 	const addMovie = document.createElement("div");
 	const addMovieBody = document.createElement("div");
 	const addMovieContent = document.createElement("div");
@@ -48,16 +48,16 @@ export const createAddMovie = () => {
 	const buttonReset = document.createElement("button");
 	const buttonSubmit = document.createElement("button");
 
-	addMovie.classList.add("add-movie");
-	addMovie.id = "add-movie";
-	addMovieBody.classList.add("add-movie__body");
-	addMovieContent.classList.add("add-movie__content");
-	addMovieContent.classList.add("content-add-movie");
-	contentAddMovieClose.classList.add("content-add-movie__close");
-	contentAddMovieConteiner.classList.add("content-add-movie__conteiner");
-	contentAddMovieHeader.classList.add("content-add-movie__header");
-	contentAddMovieTitle.classList.add("content-add-movie__title");
-	description.classList.add("content-add-movie__description");
+	addMovie.classList.add("edit-movie");
+	addMovie.id = "edit-movie";
+	addMovieBody.classList.add("edit-movie__body");
+	addMovieContent.classList.add("edit-movie__content");
+	addMovieContent.classList.add("content-edit-movie");
+	contentAddMovieClose.classList.add("content-edit-movie__close");
+	contentAddMovieConteiner.classList.add("content-edit-movie__conteiner");
+	contentAddMovieHeader.classList.add("content-edit-movie__header");
+	contentAddMovieTitle.classList.add("content-edit-movie__title");
+	description.classList.add("content-edit-movie__description");
 	description.classList.add("description");
 	descriptionBlock.classList.add("description__block");
 	descriptionHeader.classList.add("description__header");
@@ -102,11 +102,11 @@ export const createAddMovie = () => {
 	descriptionHeaderRuntime.classList.add("description__header");
 	descriptionElemRuntime.classList.add("description__elem");
 	descriptionElemRuntime.classList.add("_runtime");
-	overview.classList.add("content-add-movie__overview");
+	overview.classList.add("content-edit-movie__overview");
 	overview.classList.add("overview");
 	overviewTitle.classList.add("overview__title");
 	overviewDescription.classList.add("overview__description");
-	contentAddMovieFooter.classList.add("content-add-movie__footer");
+	contentAddMovieFooter.classList.add("content-edit-movie__footer");
 	buttonBlock.classList.add("content-add-movie__button-block");
 	buttonBlock.classList.add("button-block");
 	buttonReset.classList.add("button-block__button");
@@ -114,7 +114,7 @@ export const createAddMovie = () => {
 	buttonSubmit.classList.add("button-block__button");
 	buttonSubmit.classList.add("_submit");
 
-	contentAddMovieHeader.innerText = "ADD MOVIE"
+	contentAddMovieHeader.innerText = "EDIT MOVIE"
 	contentAddMovieClose.innerText = "X";
 	descriptionHeader.innerText = "title";
 	descriptionElem.type = "text";
@@ -146,7 +146,7 @@ export const createAddMovie = () => {
 	buttonReset.innerText = "RESET";
 	buttonSubmit.innerText = "SUBMIT";
 
-	document.body.prepend(addMovie);
+	document.body.append(addMovie);
 	addMovie.append(addMovieBody);
 	addMovieBody.append(addMovieContent);
 	addMovieContent.append(contentAddMovieClose);
@@ -194,4 +194,4 @@ export const createAddMovie = () => {
 	contentAddMovieFooter.append(buttonBlock);
 	buttonBlock.append(buttonReset);
 	buttonBlock.append(buttonSubmit);
-};
+}

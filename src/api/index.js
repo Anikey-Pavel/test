@@ -35,17 +35,21 @@ export const updateMovie = (body) =>
 		body,
 	}).then((data) => data.json());
 
-export const getMovie = (id) =>
+export const getMovie = (id) => {
 	fetch(`${baseUrl}/${id}`).then((data) => data.json());
-export const deleteMovie = (id) =>
+}
+
+export const deleteMovie = (id) => {
 	fetch(`${baseUrl}/${id}`, {
 		method: "DELETE",
 	});
+}
 
 export const updateMoviesState = (params) => {
 	if (params) updateSearchParams(params);
 	const currentParams = getSearchParams() || defaultParams;
 	return getMovies(currentParams).then((data) => {
+		console.log(data)
 		const movies = data.data;
 		const moviesElemenets = movies.map(createMovieCard);
 
