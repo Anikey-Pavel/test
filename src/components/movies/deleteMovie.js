@@ -6,28 +6,24 @@ export const deleteMovieCard = () => {
 	const deleteMovieCard = document.querySelector(".delete-movie");
 	const close = document.querySelector(".content__close");
 	const confirm = document.querySelector("#confirm");
-	const deleteBody = document.querySelector(".delete-movie__body")
+	const deleteBody = document.querySelector(".delete-movie__body");
 
 	confirm.addEventListener("click", (e) => {
 		deleteMovie();
-	})
-
-	close.addEventListener("click", (e) => {
-		deleteMovieCard.classList.remove("_active");
-		document.body.classList.remove("lock");
-	})
+	});
 
 	items.addEventListener("click", (event) => {
-		if (event.target.id != "delete") return
+		if (event.target.id != "delete") return;
 		deleteMovieCard.classList.add("_active");
 		document.body.classList.add("lock");
-	})
 
-	deleteMovieCard.addEventListener("click", (event) => {
+		if (event.target.className != "content__close") return;
+		deleteMovieCard.classList.remove("_active");
+		document.body.classList.remove("lock");
+
 		if (event.target === deleteBody) {
 			deleteMovieCard.classList.remove("_active");
 			document.body.classList.remove("lock");
 		}
-	})
-}
-
+	});
+};

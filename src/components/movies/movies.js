@@ -1,27 +1,17 @@
 import { updateMoviesState } from "../../api";
-import { parseDate } from "../../utils/date";
-import { createMovieItem } from "../createPage/createMovieItem";
-
-const defaultPoster =
-	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTsw4j6TBoBT9tGANsMBQNeb70zfEVpJ9DkQ&usqp=CAU";
-
-export const createMovieCard = (movie) => {
-	const movieElement = createMovieItem();
-	movieElement.querySelector("img").src = movie.poster_path;
-	movieElement.querySelector("img").onerror = (e) => {
-		e.target.src = defaultPoster;
-	};
-
-	movieElement.querySelector(".item__title").textContent = movie.title;
-	movieElement.querySelector(".item__category").textContent =
-		movie.genres.toString();
-	movieElement.querySelector(".item__date").textContent = parseDate(
-		movie.release_date
-	).year;
-
-	return movieElement;
-};
+import { goToMovieDetails } from "../../utils/search";
 
 export const createMovies = (container) => {
+	const clickHandler = (e) => {
+		const movieCard = e.target.closest("[data-id]");
+
+		if (movieCard) {
+			const { id } = movieCard.dataset;
+
+			goToMovieDetails(id);
+		}
+	};
+
+	container.addEventListener("click", clickHandler);
 	updateMoviesState();
 };

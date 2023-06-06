@@ -1,10 +1,9 @@
+import { createMovieItem } from "../components/createPage/createMovieItem";
 import {
 	getSearchParams,
 	objectToSearch,
 	updateSearchParams,
 } from "../utils/search";
-
-import { createMovieCard } from "../components/movies/movies";
 
 const baseUrl = "http://localhost:4000/movies";
 
@@ -37,21 +36,20 @@ export const updateMovie = (body) =>
 
 export const getMovie = (id) => {
 	fetch(`${baseUrl}/${id}`).then((data) => data.json());
-}
+};
 
 export const deleteMovie = (id) => {
 	fetch(`${baseUrl}/${id}`, {
 		method: "DELETE",
 	});
-}
+};
 
 export const updateMoviesState = (params) => {
 	if (params) updateSearchParams(params);
 	const currentParams = getSearchParams() || defaultParams;
 	return getMovies(currentParams).then((data) => {
-		console.log(data)
 		const movies = data.data;
-		const moviesElemenets = movies.map(createMovieCard);
+		const moviesElemenets = movies.map(createMovieItem);
 
 		const moviesContainer = document.querySelector("#moviesConteiner");
 		moviesContainer.innerHTML = "";

@@ -1,5 +1,4 @@
 export const createFooter = (container) => {
-
 	const footer = document.createElement("footer");
 	const footerMainBlockConteiner = document.createElement("div");
 	const footerMainBlockLogo = document.createElement("div");
@@ -14,8 +13,9 @@ export const createFooter = (container) => {
 	img.src = "./img/icons/logo.svg";
 	img.alt = "icon";
 
-	container.append(footer);
 	footer.append(footerMainBlockConteiner);
 	footerMainBlockConteiner.append(footerMainBlockLogo);
 	footerMainBlockLogo.append(img);
-}
+	console.log(container, "footer");
+	container.append(footer);
+};

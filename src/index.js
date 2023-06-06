@@ -1,40 +1,49 @@
 import { createAddMovie } from "./components/createPage/createAddMovie";
 import { createConteiner } from "./components/createPage/createConteiner";
 import { createContent } from "./components/createPage/createContent";
+import { createDeleteMovie } from "./components/createPage/createDeleteMovie";
+import { createMovieEdit } from "./components/createPage/createEditMovie";
 import { createFooter } from "./components/createPage/createFooter";
 import { createHeader } from "./components/createPage/createHeader";
 import { createMovieItem } from "./components/createPage/createMovieItem";
 import { createMovieItemContainer } from "./components/createPage/createMovieItemContainer";
 import { createMoreButton } from "./components/moreMoviesButton/createButton";
+import { createMovieDetails } from "./components/movieDetails";
 import { addMovie, openList } from "./components/movies/addMovie";
-import { createMovies } from "./components/movies/movies";
-import { openContextMenu } from "./components/context-menu/openContextMenu";
-import { createDeleteMovie } from "./components/createPage/createDeleteMovie";
 import { deleteMovieCard } from "./components/movies/deleteMovie";
-import { createMovieEdit } from "./components/createPage/createEditMovie";
 import { editMovie } from "./components/movies/editMovie";
+import { createMovies } from "./components/movies/movies";
 
 import "./style.scss";
+
+const renderHomePage = (conteinerPage) => {
+	createHeader(conteinerPage);
+	const containerForItems = createContent(conteinerPage);
+	const containerForMovies = createMovieItemContainer(containerForItems);
+	createMovies(containerForMovies);
+	createMovieItem(containerForMovies);
+	createMoreButton(containerForItems);
+	addMovie();
+	openList();
+	deleteMovieCard();
+	createMovieEdit();
+	editMovie();
+};
 
 const initApp = () => {
 	createDeleteMovie();
 	createAddMovie();
 
-	const conteinerPage = createConteiner();
-	createHeader(conteinerPage);
-	const containerForItems = createContent(conteinerPage);
-	createFooter(conteinerPage);
-	const containerForMovies = createMovieItemContainer(containerForItems);
-	createMovies(containerForMovies);
-	createMovieItem(containerForMovies);
-	createMoreButton(containerForItems);
+	const { pathName } = window;
+	const movieDetailsRgex = /\/movies\//i;
 
-	addMovie();
-	openList();
-	// openContextMenu();
-	deleteMovieCard();
-	createMovieEdit();
-	editMovie();
+	const conteinerPage = createConteiner();
+
+	if (movieDetailsRgex.test(pathName)) {
+		createMovieDetails(conteinerPage);
+	} else renderHomePage(conteinerPage);
+
+	createFooter(conteinerPage);
 };
 
 initApp();

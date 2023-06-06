@@ -7,13 +7,11 @@ export const editMovie = () => {
 	const blockContent = document.querySelector(".edit-movie__body");
 
 	items.addEventListener("click", (event) => {
-		if (event.target.id != "edit") return
+		if (event.target.id != "edit") return;
 		editBlock.classList.add("open");
 		document.body.classList.add("lock");
-		updateMovie().then((data) => {
-			console.log(data)
-		})
-	})
+		updateMovie();
+	});
 
 	buttonClose.addEventListener("click", () => {
 		editBlock.classList.remove("open");
@@ -25,5 +23,5 @@ export const editMovie = () => {
 			editBlock.classList.remove("open");
 			document.body.classList.remove("lock");
 		}
-	})
-}
+	});
+};
