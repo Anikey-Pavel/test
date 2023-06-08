@@ -16,21 +16,24 @@ import { createMovies } from "./components/movies/movies";
 
 import "./style.scss";
 
-const renderHomePage = (conteinerPage) => {
-	createHeader(conteinerPage);
-	const containerForItems = createContent(conteinerPage);
+const renderHomePage = (container) => {
+	createHeader(container);
+
+	const containerForItems = createContent(container);
 	const containerForMovies = createMovieItemContainer(containerForItems);
+
 	createMovies(containerForMovies);
 	createMovieItem(containerForMovies);
 	createMoreButton(containerForItems);
+
 	addMovie();
 	openList();
 	deleteMovieCard();
-	createMovieEdit();
 	editMovie();
 };
 
 const initApp = () => {
+	createMovieEdit();
 	createDeleteMovie();
 	createAddMovie();
 
@@ -47,3 +50,4 @@ const initApp = () => {
 };
 
 initApp();
+

@@ -4,7 +4,6 @@ const defaultPoster =
 	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTsw4j6TBoBT9tGANsMBQNeb70zfEVpJ9DkQ&usqp=CAU";
 
 export const createMovieItem = (movie) => {
-	console.log(movie);
 	const item = document.createElement("div");
 	const itemImage = document.createElement("div");
 	const img = document.createElement("img");
