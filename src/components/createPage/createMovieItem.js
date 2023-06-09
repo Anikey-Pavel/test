@@ -22,6 +22,7 @@ export const createMovieItem = (movie) => {
 	const contextMenuListItem2 = document.createElement("li");
 
 	item.dataset.id = movie.id;
+	item.id = "movie";
 	item.classList.add("content-main-block__item");
 	item.classList.add("item");
 	itemImage.classList.add("item__image");

@@ -1,3 +1,5 @@
+import { movieList } from "../../api";
+
 export const createMovieEdit = () => {
 	const addMovie = document.createElement("div");
 	const addMovieBody = document.createElement("div");
@@ -118,6 +120,7 @@ export const createMovieEdit = () => {
 	contentAddMovieClose.innerText = "X";
 	descriptionHeader.innerText = "title";
 	descriptionElem.type = "text";
+	descriptionElem.value = "";
 	descriptionHeaderDate.innerText = "date";
 	descriptionElemDate.type = "date";
 	descriptionHeaderUrl.innerText = "url";

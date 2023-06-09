@@ -16,6 +16,5 @@ export const createFooter = (container) => {
 	footer.append(footerMainBlockConteiner);
 	footerMainBlockConteiner.append(footerMainBlockLogo);
 	footerMainBlockLogo.append(img);
-	console.log(container, "footer");
 	container.append(footer);
 };

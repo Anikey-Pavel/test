@@ -5,7 +5,6 @@ import { createDeleteMovie } from "./components/createPage/createDeleteMovie";
 import { createMovieEdit } from "./components/createPage/createEditMovie";
 import { createFooter } from "./components/createPage/createFooter";
 import { createHeader } from "./components/createPage/createHeader";
-import { createMovieItem } from "./components/createPage/createMovieItem";
 import { createMovieItemContainer } from "./components/createPage/createMovieItemContainer";
 import { createMoreButton } from "./components/moreMoviesButton/createButton";
 import { createMovieDetails } from "./components/movieDetails";
@@ -23,7 +22,6 @@ const renderHomePage = (container) => {
 	const containerForMovies = createMovieItemContainer(containerForItems);
 
 	createMovies(containerForMovies);
-	createMovieItem(containerForMovies);
 	createMoreButton(containerForItems);
 
 	addMovie();
