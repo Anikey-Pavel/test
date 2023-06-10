@@ -1,4 +1,5 @@
 import { parseDate } from "../../utils/date";
+import { createMovieEdit } from "./createEditMovie";
 
 const defaultPoster =
 	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTsw4j6TBoBT9tGANsMBQNeb70zfEVpJ9DkQ&usqp=CAU";
@@ -76,17 +77,17 @@ export const createMovieItem = (movie) => {
 	const openContextMenu = () => {
 		const items = document.querySelector(".content-main-block__items");
 
-		items.addEventListener("click", (event) => {
+		items?.addEventListener("click", (event) => {
 			if (event.target !== menu) return;
 
 			contextMenuOptions.classList.add("_open-menu");
 		});
 
-		contextMenuClose.addEventListener("click", () => {
+		contextMenuClose?.addEventListener("click", () => {
 			contextMenuOptions.classList.remove("_open-menu");
 		});
 
-		item.addEventListener("click", (e) => {
+		item?.addEventListener("click", (e) => {
 			if (e.target !== contextMenuOptions) {
 				contextMenuOptions.classList.remove("_open-menu");
 			}
@@ -94,6 +95,8 @@ export const createMovieItem = (movie) => {
 	};
 
 	openContextMenu();
+
+	contextMenuListItem1.addEventListener("click", createMovieEdit);
 
 	return item;
 };

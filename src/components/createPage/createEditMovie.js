@@ -1,7 +1,7 @@
-import { movieList } from "../../api";
+import { movieList, updateMovie } from "../../api";
 
 export const createMovieEdit = () => {
-	const addMovie = document.createElement("div");
+	const addMovie = document.createElement("form");
 	const addMovieBody = document.createElement("div");
 	const addMovieContent = document.createElement("div");
 	const contentAddMovieClose = document.createElement("a");
@@ -20,7 +20,7 @@ export const createMovieEdit = () => {
 	const descriptionElemUrl = document.createElement("input");
 	const descriptionBlockRating = document.createElement("div");
 	const descriptionHeaderRating = document.createElement("div");
-	const descriptionElemRating = document.createElement("div");
+	const descriptionElemRating = document.createElement("input");
 	const descriptionBlockGenre = document.createElement("div");
 	const descriptionHeaderGenre = document.createElement("div");
 	const descriptionMenu = document.createElement("div");
@@ -41,7 +41,7 @@ export const createMovieEdit = () => {
 	const labelComedy = document.createElement("label");
 	const descriptionBlockRuntime = document.createElement("div");
 	const descriptionHeaderRuntime = document.createElement("div");
-	const descriptionElemRuntime = document.createElement("div");
+	const descriptionElemRuntime = document.createElement("input");
 	const overview = document.createElement("div");
 	const overviewTitle = document.createElement("div");
 	const overviewDescription = document.createElement("textarea");
@@ -116,18 +116,22 @@ export const createMovieEdit = () => {
 	buttonSubmit.classList.add("button-block__button");
 	buttonSubmit.classList.add("_submit");
 
-	contentAddMovieHeader.innerText = "EDIT MOVIE"
+	contentAddMovieHeader.innerText = "EDIT MOVIE";
 	contentAddMovieClose.innerText = "X";
 	descriptionHeader.innerText = "title";
 	descriptionElem.type = "text";
 	descriptionElem.value = "";
+	descriptionElem.name = "title";
 	descriptionHeaderDate.innerText = "date";
 	descriptionElemDate.type = "date";
+	descriptionElemDate.name = "date";
 	descriptionHeaderUrl.innerText = "url";
 	descriptionElemUrl.type = "text";
+	descriptionElemUrl.name = "url";
 	descriptionElemUrl.placeholder = "https://";
 	descriptionHeaderRating.innerText = "rating";
-	descriptionElemRating.innerText = "7.8";
+	descriptionElemRating.placeholder = "7.8";
+	descriptionElemRating.name = "rating";
 	descriptionHeaderGenre.innerText = "genre";
 	menuDescriptionTitle.innerText = "Select Genre";
 	menuDescriptionCheckCrime.type = "checkbox";
@@ -143,9 +147,11 @@ export const createMovieEdit = () => {
 	labelComedy.setAttribute("for", menuDescriptionCheckComedy.id);
 	labelComedy.innerText = "Comedy";
 	descriptionHeaderRuntime.innerText = "runtime";
-	descriptionElemRuntime.innerText = "minutes";
+	descriptionElemRuntime.placeholder = "minutes";
+	descriptionElemRuntime.name = "minutes";
 	overviewTitle.innerText = "OVERVIEW";
 	overviewDescription.placeholder = "Movie description";
+	overviewDescription.name = "overview";
 	buttonReset.innerText = "RESET";
 	buttonSubmit.innerText = "SUBMIT";
 
@@ -197,4 +203,58 @@ export const createMovieEdit = () => {
 	contentAddMovieFooter.append(buttonBlock);
 	buttonBlock.append(buttonReset);
 	buttonBlock.append(buttonSubmit);
-}
+
+	const editMovie = () => {
+		const items = document.querySelector(".content-main-block__items");
+		const editBlock = document.querySelector(".edit-movie");
+		const buttonClose = document.querySelector(".content-edit-movie__close");
+		const blockContent = document.querySelector(".edit-movie__body");
+
+		items.addEventListener("click", (event) => {
+			if (event.target.id !== "edit") return;
+			editBlock.classList.add("open");
+			document.body.classList.add("lock");
+		});
+
+		const movieCard = event.target.closest("[data-id]");
+		const id = movieCard.getAttribute("data-id");
+		const currentMovie = movieList[id];
+
+		items.addEventListener("click", (event) => {
+			if (event.target.id !== "edit") return;
+
+			descriptionElem.value = currentMovie.title;
+			descriptionElemDate.value = currentMovie.release_date;
+			descriptionElemUrl.value = currentMovie.poster_path;
+			descriptionElemRating.value = currentMovie.vote_average;
+			descriptionElemRuntime.value = currentMovie.runtime;
+			overviewDescription.value = currentMovie.overview;
+		});
+
+		editBlock.addEventListener("submit", (e) => {
+			e.preventDefault();
+			const form = new FormData(editBlock);
+
+			currentMovie.title = form.get("title");
+			currentMovie.release_date = form.get("date");
+			currentMovie.poster_path = form.get("url");
+			currentMovie.vote_average = +form.get("rating");
+			currentMovie.runtime = +form.get("minutes");
+			currentMovie.overview = form.get("overview");
+
+			updateMovie(currentMovie);
+		});
+
+		buttonClose.addEventListener("click", () => {
+			document.body.remove(addMovie);
+		});
+
+		editBlock.addEventListener("click", (event) => {
+			if (event.target === blockContent) {
+				document.body.remove(addMovie);
+			}
+		});
+	};
+
+	editMovie();
+};

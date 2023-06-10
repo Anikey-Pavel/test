@@ -31,12 +31,14 @@ export const createMovie = (body) =>
 export const updateMovie = (body) =>
 	fetch(baseUrl, {
 		method: "PUT",
-		body,
+		body: JSON.stringify(body),
+		headers: {
+			"Content-Type": "application/json",
+		},
 	}).then((data) => data.json());
 
-export const getMovie = (id) => {
+export const getMovie = (id) =>
 	fetch(`${baseUrl}/${id}`).then((data) => data.json());
-};
 
 export const deleteMovie = (id) => {
 	fetch(`${baseUrl}/${id}`, {
@@ -44,38 +46,13 @@ export const deleteMovie = (id) => {
 	});
 };
 
-// export const updateMoviesState = (params) => {
-// 	if (params) updateSearchParams(params);
-// 	const currentParams = getSearchParams() || defaultParams;
-// 	return getMovies(currentParams).then((data) => {
-// 		const movies = data.data;
-// 		const moviesElemenets = movies.map(createMovieItem);
-
-// 		const moviesContainer = document.querySelector("#moviesConteiner");
-// 		moviesContainer.innerHTML = "";
-// 		moviesContainer.append(...moviesElemenets);
-
-// 		const moviesCountContainer = document.querySelector("#moviesCounter");
-// 		if (moviesCountContainer) {
-// 			moviesCountContainer.textContent = data.totalAmount;
-// 		}
-
-// 		const showMoreButton = document.querySelector("#showMore");
-
-// 		if (data.totalAmount <= (currentParams.limit || defaultLimit)) {
-// 			showMoreButton.classList.add("hidden");
-// 		} else {
-// 			showMoreButton.classList.remove("hidden");
-// 		}
-// 	});
-
 export const movieList = {};
 
 export const updateMoviesState = (params) => {
 	if (params) updateSearchParams(params);
 	const currentParams = getSearchParams() || defaultParams;
 	return getMovies(currentParams).then((data) => {
-		data.data.forEach(movie => {
+		data.data.forEach((movie) => {
 			movieList[movie.id] = movie;
 		});
 		const moviesElemenets = Object.values(movieList).map(createMovieItem);

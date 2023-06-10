@@ -4,12 +4,12 @@ export function addMovie() {
 	const buttonClose = document.querySelector(".content-add-movie__close");
 	const blockContent = document.querySelector(".add-movie__body");
 
-	button.addEventListener("click", () => {
+	button?.addEventListener("click", () => {
 		block.classList.add("open");
 		document.body.classList.add("lock");
 	});
 
-	buttonClose.addEventListener("click", (e) => {
+	buttonClose?.addEventListener("click", (e) => {
 		block.classList.remove("open");
 		document.body.classList.remove("lock");
 		e.preventDefault();
