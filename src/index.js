@@ -12,7 +12,7 @@ import { createMovies } from "./components/movies/movies";
 
 import "./style.scss";
 
-const renderHomePage = (container) => {};
+const renderHomePage = (container) => { };
 
 const initApp = () => {
 	createDeleteMovie();

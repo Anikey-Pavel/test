@@ -153,7 +153,9 @@ export const createMovieEdit = () => {
 	overviewDescription.placeholder = "Movie description";
 	overviewDescription.name = "overview";
 	buttonReset.innerText = "RESET";
+	buttonReset.type = "reset";
 	buttonSubmit.innerText = "SUBMIT";
+	buttonSubmit.type = "submit";
 
 	document.body.append(addMovie);
 	addMovie.append(addMovieBody);
@@ -254,7 +256,19 @@ export const createMovieEdit = () => {
 				document.body.remove(addMovie);
 			}
 		});
-	};
 
+
+		buttonReset.addEventListener("click", () => {
+			descriptionElem.value = "";
+			descriptionElemDate.value = "";
+			descriptionElemUrl.value = "";
+			descriptionElemRating.value = "";
+			descriptionElemRuntime.value = "";
+			overviewDescription.value = "";
+		})
+	}
 	editMovie();
+
 };
+
+

@@ -16,7 +16,6 @@ export const createMovies = (container) => {
 			confirm.addEventListener("click", () => {
 				deleteMovie(id);
 			});
-
 		}
 	};
 

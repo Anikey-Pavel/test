@@ -4,6 +4,7 @@ import {
 	objectToSearch,
 	updateSearchParams,
 } from "../utils/search";
+import { createWindowCongratulations } from "../components/createPage/createCongratulations";
 
 const baseUrl = "http://localhost:4000/movies";
 
@@ -43,6 +44,10 @@ export const getMovie = (id) =>
 export const deleteMovie = (id) => {
 	fetch(`${baseUrl}/${id}`, {
 		method: "DELETE",
+	}).then(() => {
+
+		createWindowCongratulations()
+		document.body.classList.add("lock");
 	});
 };
 

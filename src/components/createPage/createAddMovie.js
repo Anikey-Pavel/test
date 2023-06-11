@@ -18,7 +18,7 @@ export const createAddMovie = () => {
 	const descriptionElemUrl = document.createElement("input");
 	const descriptionBlockRating = document.createElement("div");
 	const descriptionHeaderRating = document.createElement("div");
-	const descriptionElemRating = document.createElement("div");
+	const descriptionElemRating = document.createElement("input");
 	const descriptionBlockGenre = document.createElement("div");
 	const descriptionHeaderGenre = document.createElement("div");
 	const descriptionMenu = document.createElement("div");
@@ -39,7 +39,7 @@ export const createAddMovie = () => {
 	const labelComedy = document.createElement("label");
 	const descriptionBlockRuntime = document.createElement("div");
 	const descriptionHeaderRuntime = document.createElement("div");
-	const descriptionElemRuntime = document.createElement("div");
+	const descriptionElemRuntime = document.createElement("input");
 	const overview = document.createElement("div");
 	const overviewTitle = document.createElement("div");
 	const overviewDescription = document.createElement("textarea");
@@ -124,7 +124,7 @@ export const createAddMovie = () => {
 	descriptionElemUrl.type = "text";
 	descriptionElemUrl.placeholder = "https://";
 	descriptionHeaderRating.innerText = "rating";
-	descriptionElemRating.innerText = "7.8";
+	descriptionElemRating.placeholder = "7.8";
 	descriptionHeaderGenre.innerText = "genre";
 	menuDescriptionTitle.innerText = "Select Genre";
 	menuDescriptionCheckCrime.type = "checkbox";
@@ -140,7 +140,7 @@ export const createAddMovie = () => {
 	labelComedy.setAttribute("for", menuDescriptionCheckComedy.id);
 	labelComedy.innerText = "Comedy";
 	descriptionHeaderRuntime.innerText = "runtime";
-	descriptionElemRuntime.innerText = "minutes";
+	descriptionElemRuntime.placeholder = "minutes";
 	overviewTitle.innerText = "OVERVIEW";
 	overviewDescription.placeholder = "Movie description";
 	buttonReset.innerText = "RESET";
