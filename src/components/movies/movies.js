@@ -1,6 +1,6 @@
-import { updateMoviesState } from "../../api";
+import { deleteMovie, updateMoviesState } from "../../api";
 import { goToMovieDetails } from "../../utils/search";
-import { deleteMovie } from "../../api";
+import { renderTopPage } from "../createPage/createTopPage";
 
 export const createMovies = (container) => {
 	const clickHandler = (e) => {
@@ -10,7 +10,8 @@ export const createMovies = (container) => {
 			const { id } = movieCard.dataset;
 
 			goToMovieDetails(id);
-
+			const headerContainer = document.querySelector(".headerOrDetails");
+			renderTopPage(headerContainer);
 			const confirm = document.querySelector("#confirm");
 
 			confirm.addEventListener("click", () => {

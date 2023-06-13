@@ -3,32 +3,29 @@ import { createConteiner } from "./components/createPage/createConteiner";
 import { createContent } from "./components/createPage/createContent";
 import { createDeleteMovie } from "./components/createPage/createDeleteMovie";
 import { createFooter } from "./components/createPage/createFooter";
-import { createHeader } from "./components/createPage/createHeader";
 import { createMovieItemContainer } from "./components/createPage/createMovieItemContainer";
+import { renderTopPage } from "./components/createPage/createTopPage";
 import { createMoreButton } from "./components/moreMoviesButton/createButton";
 import { addMovie, openList } from "./components/movies/addMovie";
 import { deleteMovieCard } from "./components/movies/deleteMovie";
 import { createMovies } from "./components/movies/movies";
-
 import "./style.scss";
-
-const renderHomePage = (container) => { };
 
 const initApp = () => {
 	createDeleteMovie();
 	createAddMovie();
 
-	const { pathname } = window.location;
-	const movieDetailsRgex = /\/movie/i;
-
 	const conteinerPage = createConteiner();
+
+	const headerContainer = document.createElement("div");
+	headerContainer.classList.add("headerOrDetails");
+	conteinerPage.append(headerContainer);
+
+	renderTopPage(headerContainer);
+
 	const containerForItems = createContent(conteinerPage);
 	const containerForMovies = createMovieItemContainer(containerForItems);
-	// if (movieDetailsRgex.test(pathname)) {
-	// 	createMovieDetails(conteinerPage);
-	// } else renderHomePage(conteinerPage);
 
-	createHeader(conteinerPage);
 	createMovies(containerForMovies);
 	createMoreButton(containerForItems);
 

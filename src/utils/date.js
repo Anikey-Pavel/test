@@ -6,3 +6,9 @@ export const parseDate = (data) => {
 		day: [2],
 	};
 };
+
+export const parseTime = (mins) => {
+	const hours = Math.trunc(mins / 60);
+	const minutes = mins % 60;
+	return `${hours ? `${hours}h ` : ""}${minutes ? `${minutes}min` : ""}`;
+};

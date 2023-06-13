@@ -1,7 +1,7 @@
 import { parseDate } from "../../utils/date";
 import { createMovieEdit } from "./createEditMovie";
 
-const defaultPoster =
+export const defaultPoster =
 	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTsw4j6TBoBT9tGANsMBQNeb70zfEVpJ9DkQ&usqp=CAU";
 
 export const createMovieItem = (movie) => {

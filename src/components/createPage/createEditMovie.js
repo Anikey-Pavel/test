@@ -256,19 +256,6 @@ export const createMovieEdit = () => {
 				document.body.remove(addMovie);
 			}
 		});
-
-
-		buttonReset.addEventListener("click", () => {
-			descriptionElem.value = "";
-			descriptionElemDate.value = "";
-			descriptionElemUrl.value = "";
-			descriptionElemRating.value = "";
-			descriptionElemRuntime.value = "";
-			overviewDescription.value = "";
-		})
-	}
+	};
 	editMovie();
-
 };
-
-

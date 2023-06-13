@@ -1,4 +1,7 @@
-export const createDetails = (container) => {
+import { parseDate, parseTime } from "../../utils/date";
+import { makeSaveImage } from "../../utils/img";
+
+export const createDetails = (container, movie) => {
 	const details = document.createElement("div");
 	details.classList.add("details");
 	container.append(details);
@@ -8,13 +11,13 @@ export const createDetails = (container) => {
 	details.append(detailsHeader);
 
 	const logo = document.createElement("img");
-	logo.src = "";
+	logo.src = "./img/icons/logo.svg";
 	logo.alt = "Logo";
 	detailsHeader.append(logo);
 
 	const search = document.createElement("img");
-	logo.src = "";
-	logo.alt = "Search";
+	search.src = "./img/icons/Search Button.svg";
+	search.alt = "Search";
 	detailsHeader.append(search);
 
 	const detailsContent = document.createElement("div");
@@ -26,12 +29,16 @@ export const createDetails = (container) => {
 	detailsContent.append(contentDetailsImage);
 
 	const poster = document.createElement("img");
-	poster.src = "";
+	poster.src = movie.poster_path;
+	makeSaveImage(poster);
 	poster.alt = "poster";
 	contentDetailsImage.append(poster);
 
 	const contentDetailsDescription = document.createElement("div");
-	contentDetailsDescription.classList.add("content-details__description", "content-description");
+	contentDetailsDescription.classList.add(
+		"content-details__description",
+		"content-description"
+	);
 	detailsContent.append(contentDetailsDescription);
 
 	const contentDescriptionHeader = document.createElement("div");
@@ -40,7 +47,7 @@ export const createDetails = (container) => {
 
 	const contentDescriptionTitle = document.createElement("div");
 	contentDescriptionTitle.classList.add("content-description__title");
-	contentDescriptionTitle.innerText = "Pulp Fiction";
+	contentDescriptionTitle.innerText = movie.title;
 	contentDescriptionHeader.append(contentDescriptionTitle);
 
 	const contentDescriptionRating = document.createElement("div");
@@ -48,12 +55,12 @@ export const createDetails = (container) => {
 	contentDescriptionHeader.append(contentDescriptionRating);
 
 	const span = document.createElement("span");
-	span.innerText = 8.9;
+	span.innerText = movie.vote_average;
 	contentDescriptionRating.append(span);
 
 	const contentDescriptionSubtitle = document.createElement("div");
 	contentDescriptionSubtitle.classList.add("content-description__subtitle");
-	contentDescriptionSubtitle.innerText = "Action & Adventure";
+	contentDescriptionSubtitle.innerText = movie.genres.join(" & ");
 	contentDetailsDescription.append(contentDescriptionSubtitle);
 
 	const contentDescriptionTime = document.createElement("div");
@@ -62,16 +69,18 @@ export const createDetails = (container) => {
 
 	const contentDescriptionDate = document.createElement("div");
 	contentDescriptionDate.classList.add("content-description__date");
-	contentDescriptionDate.innerText = "1994";
+	contentDescriptionDate.innerText = parseDate(movie.release_date).year;
 	contentDescriptionTime.append(contentDescriptionDate);
 
 	const contentDescriptionRuntime = document.createElement("div");
 	contentDescriptionRuntime.classList.add("content-description__runtime");
-	contentDescriptionRuntime.innerText = "2h 34min";
+	contentDescriptionRuntime.innerText = parseTime(movie.runtime);
 	contentDescriptionTime.append(contentDescriptionRuntime);
 
 	const contentDescriptionDescription = document.createElement("div");
-	contentDescriptionDescription.classList.add("content-description__description");
-	contentDescriptionDescription.innerText = "decription";
+	contentDescriptionDescription.classList.add(
+		"content-description__description"
+	);
+	contentDescriptionDescription.innerText = movie.overview;
 	contentDetailsDescription.append(contentDescriptionDescription);
-}
+};
