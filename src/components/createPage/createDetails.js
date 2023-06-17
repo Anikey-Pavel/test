@@ -1,5 +1,6 @@
 import { parseDate, parseTime } from "../../utils/date";
 import { makeSaveImage } from "../../utils/img";
+import { goBack } from "../../utils/search";
 
 export const createDetails = (container, movie) => {
 	const details = document.createElement("div");
@@ -18,6 +19,7 @@ export const createDetails = (container, movie) => {
 	const search = document.createElement("img");
 	search.src = "./img/icons/Search Button.svg";
 	search.alt = "Search";
+	search.addEventListener("click", goBack);
 	detailsHeader.append(search);
 
 	const detailsContent = document.createElement("div");

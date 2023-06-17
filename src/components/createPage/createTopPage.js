@@ -1,13 +1,19 @@
 import { createMovieDetails } from "../movieDetails/index";
 import { createHeader } from "./createHeader";
 
-export const renderTopPage = (container) => {
+export const renderTopPage = (container = undefined) => {
+	const realContainer = container || document.querySelector(".headerOrDetails");
 	const { pathname } = window.location;
 	const movieDetailsRgex = /\/movie/i;
 
-	container.textContent = "";
+	window.scrollTo({
+		top: 0,
+		behavior: "smooth",
+	});
+
+	realContainer.textContent = "";
 
 	if (movieDetailsRgex.test(pathname)) {
-		createMovieDetails(container);
-	} else createHeader(container);
+		createMovieDetails(realContainer);
+	} else createHeader(realContainer);
 };

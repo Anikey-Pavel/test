@@ -1,3 +1,5 @@
+import { renderTopPage } from "../components/createPage/createTopPage";
+
 export const searcToObject = (searchSrtring) => {
 	const searchObject = {};
 	const separetedString = searchSrtring.substring(1);
@@ -26,8 +28,8 @@ export const objectToSearch = (params) => {
 
 export const getSearchParams = () => searcToObject(window.location.search);
 
-export const updateSearchParams = (params) => {
-	const url = new URL(window.location);
+export const updateSearchParams = (params, newUrl = window.location) => {
+	const url = new URL(newUrl);
 	if (params.filter) url.searchParams.set("filter", params.filter);
 	if (params.limit) url.searchParams.set("limit", params.limit);
 	if (params.search) {
@@ -46,4 +48,9 @@ export const goToMovieDetails = (id) => {
 	url.searchParams.set("id", id);
 
 	window.history.pushState(null, "movie details", url.toString());
+};
+
+export const goBack = () => {
+	updateSearchParams(getSearchParams(), window.location.origin);
+	renderTopPage();
 };

@@ -9,7 +9,7 @@ import { createMoreButton } from "./components/moreMoviesButton/createButton";
 import { addMovie, openList } from "./components/movies/addMovie";
 import { deleteMovieCard } from "./components/movies/deleteMovie";
 import { createMovies } from "./components/movies/movies";
-import "./style.scss";
+import "./style/style.scss";
 
 const initApp = () => {
 	createDeleteMovie();

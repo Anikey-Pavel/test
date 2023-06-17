@@ -1,10 +1,10 @@
+import { createWindowCongratulations } from "../components/createPage/createCongratulations";
 import { createMovieItem } from "../components/createPage/createMovieItem";
 import {
 	getSearchParams,
 	objectToSearch,
 	updateSearchParams,
 } from "../utils/search";
-import { createWindowCongratulations } from "../components/createPage/createCongratulations";
 
 const baseUrl = "http://localhost:4000/movies";
 
@@ -17,41 +17,6 @@ const defaultParams = {
 	sortBy: undefined,
 	sortOrder: "desc",
 };
-
-export const getMovies = (params) =>
-	fetch(`${baseUrl}${objectToSearch(params || defaultParams)}`).then((data) =>
-		data.json()
-	);
-
-export const createMovie = (body) =>
-	fetch(baseUrl, {
-		method: "POST",
-		body,
-	}).then((data) => data.json());
-
-export const updateMovie = (body) =>
-	fetch(baseUrl, {
-		method: "PUT",
-		body: JSON.stringify(body),
-		headers: {
-			"Content-Type": "application/json",
-		},
-	}).then((data) => data.json());
-
-export const getMovie = (id) =>
-	fetch(`${baseUrl}/${id}`).then((data) => data.json());
-
-export const deleteMovie = (id) => {
-	fetch(`${baseUrl}/${id}`, {
-		method: "DELETE",
-	}).then(() => {
-
-		createWindowCongratulations()
-		document.body.classList.add("lock");
-	});
-};
-
-export const movieList = {};
 
 export const updateMoviesState = (params) => {
 	if (params) updateSearchParams(params);
@@ -80,3 +45,43 @@ export const updateMoviesState = (params) => {
 		}
 	});
 };
+
+export const getMovies = (params) =>
+	fetch(`${baseUrl}${objectToSearch(params || defaultParams)}`).then((data) =>
+		data.json()
+	);
+
+export const createMovie = (body) =>
+	fetch(baseUrl, {
+		method: "POST",
+		body,
+	}).then((data) => {
+		updateMoviesState();
+		return data.json();
+	});
+
+export const updateMovie = (body) =>
+	fetch(baseUrl, {
+		method: "PUT",
+		body: JSON.stringify(body),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	}).then((data) => {
+		updateMoviesState();
+		return data.json();
+	});
+
+export const getMovie = (id) =>
+	fetch(`${baseUrl}/${id}`).then((data) => data.json());
+
+export const deleteMovie = (id) => {
+	fetch(`${baseUrl}/${id}`, {
+		method: "DELETE",
+	}).then(() => {
+		updateMoviesState();
+		createWindowCongratulations();
+	});
+};
+
+export const movieList = {};

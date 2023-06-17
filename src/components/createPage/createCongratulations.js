@@ -9,7 +9,10 @@ export const createWindowCongratulations = () => {
 	congratulations.append(congratulationsBody);
 
 	const congratulationsContent = document.createElement("div");
-	congratulationsContent.classList.add("congratulations__content", "content-congratulations");
+	congratulationsContent.classList.add(
+		"congratulations__content",
+		"content-congratulations"
+	);
 	congratulationsBody.append(congratulationsContent);
 
 	const contentCongratulationsClose = document.createElement("div");
@@ -18,15 +21,17 @@ export const createWindowCongratulations = () => {
 	congratulationsContent.append(contentCongratulationsClose);
 
 	congratulationsBody.addEventListener("click", () => {
-		document.body.remove(congratulations);
-	})
+		congratulations.remove();
+	});
 
 	contentCongratulationsClose.addEventListener("click", () => {
-		document.body.remove(congratulations);
-	})
+		congratulations.remove();
+	});
 
 	const contentCongratulationsContainer = document.createElement("div");
-	contentCongratulationsContainer.classList.add("content-congratulations__container");
+	contentCongratulationsContainer.classList.add(
+		"content-congratulations__container"
+	);
 	congratulationsContent.append(contentCongratulationsContainer);
 
 	const contentCongratulationsImg = document.createElement("div");
@@ -44,7 +49,10 @@ export const createWindowCongratulations = () => {
 	contentCongratulationsContainer.append(contentCongratulationsTitle);
 
 	const contentCongratulationsSubtitle = document.createElement("div");
-	contentCongratulationsSubtitle.classList.add("content-congratulations__subtitle");
-	contentCongratulationsSubtitle.innerText = "The movie has been added to database successfully";
+	contentCongratulationsSubtitle.classList.add(
+		"content-congratulations__subtitle"
+	);
+	contentCongratulationsSubtitle.innerText =
+		"The movie has been added to database successfully";
 	contentCongratulationsContainer.append(contentCongratulationsSubtitle);
-} 
+};
