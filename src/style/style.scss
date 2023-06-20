@@ -6,6 +6,7 @@
 @import "edit-movie.scss";
 @import "congratulations.scss";
 @import "details.scss";
+@import "preloader.scss";
 
 html {
 	height: 100%;
@@ -21,6 +22,7 @@ body {
 
 body.lock {
 	overflow: hidden;
+	background-color: rgba(61, 59, 59, 0.5);
 }
 
 .hidden {

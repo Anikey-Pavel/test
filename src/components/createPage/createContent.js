@@ -1,8 +1,10 @@
-import { filterDocumntary } from "../movies/sortMovie";
-import { filterComedy } from "../movies/sortMovie";
-import { filterHorror } from "../movies/sortMovie";
-import { filterCrime } from "../movies/sortMovie";
-import { filterAll } from "../movies/sortMovie";
+import {
+	filterAll,
+	filterComedy,
+	filterCrime,
+	filterDocumntary,
+	filterHorror,
+} from "../movies/sortMovie";
 
 export const createContent = (container) => {
 	const mainBlockContent = document.createElement("div");

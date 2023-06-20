@@ -1,6 +1,10 @@
 import { createWindowCongratulations } from "../components/createPage/createCongratulations";
 import { createMovieItem } from "../components/createPage/createMovieItem";
-import { getSearchParams, objectToSearch, updateSearchParams, } from "../utils/search";
+import {
+	getSearchParams,
+	objectToSearch,
+	updateSearchParams,
+} from "../utils/search";
 
 export const movieList = {};
 
@@ -16,19 +20,31 @@ const defaultParams = {
 	sortOrder: "desc",
 };
 
+const { body } = document;
+
+const blcokRequest = (promise) => {
+	body.classList.add("is-loading");
+	return promise.finally(
+		setTimeout(() => body.classList.remove("is-loading"), 2000)
+	);
+};
+
 export const getMovies = (params) =>
-	fetch(`${baseUrl}${objectToSearch(params || defaultParams)}`).then((data) =>
-		data.json()
+	blcokRequest(
+		fetch(`${baseUrl}${objectToSearch(params || defaultParams)}`).then((data) =>
+			data.json()
+		)
 	);
 
 export const updateMoviesState = (params) => {
 	if (params) updateSearchParams(params);
 	const currentParams = getSearchParams() || defaultParams;
+	const moviesElemenets = [];
 	return getMovies(currentParams).then((data) => {
 		data.data.forEach((movie) => {
 			movieList[movie.id] = movie;
+			moviesElemenets.push(createMovieItem(movie));
 		});
-		const moviesElemenets = Object.values(movieList).map(createMovieItem);
 
 		const moviesContainer = document.querySelector("#moviesConteiner");
 		moviesContainer.innerHTML = "";
@@ -50,29 +66,32 @@ export const updateMoviesState = (params) => {
 };
 
 export const createMovie = (body) =>
-	fetch(baseUrl, {
-		method: "POST",
-		body,
-	}).then((data) => {
-		updateMoviesState();
-		return data.json();
-	});
+	blcokRequest(
+		fetch(baseUrl, {
+			method: "POST",
+			body,
+		}).then((data) => {
+			updateMoviesState();
+			return data.json();
+		})
+	);
 
 export const updateMovie = (body) =>
-	fetch(baseUrl, {
-		method: "PUT",
-		body: JSON.stringify(body),
-		headers: {
-			"Content-Type": "application/json",
-		},
-	}).then((data) => {
-		updateMoviesState();
-		return data.json();
-	});
+	blcokRequest(
+		fetch(baseUrl, {
+			method: "PUT",
+			body: JSON.stringify(body),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		}).then((data) => {
+			updateMoviesState();
+			return data.json();
+		})
+	);
 
 export const getMovie = (id) =>
-	fetch(`${baseUrl}/${id}`).then((data) => data.json());
-
+	blcokRequest(fetch(`${baseUrl}/${id}`).then((data) => data.json()));
 export const deleteMovie = (id) => {
 	fetch(`${baseUrl}/${id}`, {
 		method: "DELETE",
