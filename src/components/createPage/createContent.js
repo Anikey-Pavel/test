@@ -1,24 +1,29 @@
-import {
-	filterAll,
-	filterComedy,
-	filterCrime,
-	filterDocumntary,
-	filterHorror,
-} from "../movies/sortMovie";
+import { sortMovie } from "../movies/sortMovie";
+import { updateMoviesState } from "../../api";
 
 export const createContent = (container) => {
 	const mainBlockContent = document.createElement("div");
-	const contentMainBlockHeader = document.createElement("div");
+	const contentMainBlockHeader = document.createElement("form");
 	const contentMainBlockMenu = document.createElement("div");
-	const menuList = document.createElement("ul");
-	const menuItem1 = document.createElement("li");
-	const menuItem2 = document.createElement("li");
-	const menuItem3 = document.createElement("li");
-	const menuItem4 = document.createElement("li");
-	const menuItem5 = document.createElement("li");
+	const menuList = document.createElement("div");
+	// const menuItem1Container = document.createElement("label");
+	// const menuItem1 = document.createElement("input");
+	const menuItem1 = document.createElement("div");
+	const menuItem2Container = document.createElement("label");
+	const menuItem2 = document.createElement("input");
+	const menuItem3Container = document.createElement("label");
+	const menuItem3 = document.createElement("input");
+	const menuItem4Container = document.createElement("label");
+	const menuItem4 = document.createElement("input");
+	const menuItem5Container = document.createElement("label");
+	const menuItem5 = document.createElement("input");
 	const sort = document.createElement("div");
 	const sortText = document.createElement("div");
-	const sortMenu = document.createElement("div");
+	const sortMenu = document.createElement("select");
+	const optionsRealeseDateMax = document.createElement("option");
+	const optionsRealeseDateMin = document.createElement("option");
+	const optionsRatingMax = document.createElement("option");
+	const optionsRatingMin = document.createElement("option");
 	const contentMainBlockSubtitle = document.createElement("div");
 	const moviesCountContainer = document.createElement("span");
 
@@ -30,35 +35,72 @@ export const createContent = (container) => {
 	contentMainBlockMenu.classList.add("content-main-block__menu");
 	contentMainBlockMenu.classList.add("menu");
 	menuList.classList.add("menu__list");
+
+	menuItem1.innerText = "All";
 	menuItem1.classList.add("menu__item");
 	menuItem1.id = "All";
 
-	menuItem1.addEventListener("click", filterAll);
+	menuItem1.addEventListener("click", () => {
+		const url = new URL(window.location.origin);
+		window.history.pushState(null, "movie details", url.toString());
+		updateMoviesState();
+	});
 
-	menuItem2.classList.add("menu__item");
-	menuItem2.id = "Documentary";
+	// menuItem1Container.innerText = "All";
+	// menuItem1Container.classList.add("menu__item");
+	// menuItem1Container.id = "All";
+	// menuItem1.type = "checkbox";
+	// menuItem1.name = "genre";
+	// menuItem1.value = "All";
 
-	menuItem2.addEventListener("click", filterDocumntary);
+	contentMainBlockHeader.addEventListener("change", sortMovie);
 
-	menuItem3.classList.add("menu__item");
-	menuItem3.id = "Comedy";
+	menuItem2Container.innerText = "Documentary";
+	menuItem2Container.classList.add("menu__item");
+	menuItem2Container.id = "Documentary";
+	// menuItem2.classList.add("menu__item");
+	// menuItem2.id = "Documentary";
+	menuItem2.type = "checkbox";
+	menuItem2.name = "genre";
+	menuItem2.value = "Documentary";
 
-	menuItem3.addEventListener("click", filterComedy);
+	menuItem3Container.innerText = "Comedy";
+	menuItem3Container.classList.add("menu__item");
+	menuItem3Container.id = "Comedy";
+	// menuItem3.classList.add("menu__item");
+	// menuItem3.id = "Comedy";
+	menuItem3.type = "checkbox";
+	menuItem3.name = "genre";
+	menuItem3.value = "Comedy";
 
-	menuItem4.classList.add("menu__item");
-	menuItem4.id = "Horror";
+	menuItem4Container.innerText = "Horror";
+	menuItem4Container.classList.add("menu__item");
+	menuItem4Container.id = "Horror";
+	menuItem4.type = "checkbox";
+	menuItem4.name = "genre";
+	menuItem4.value = "Horror";
 
-	menuItem4.addEventListener("click", filterHorror);
-
-	menuItem5.classList.add("menu__item");
-	menuItem5.id = "Crime";
-
-	menuItem5.addEventListener("click", filterCrime);
+	menuItem5Container.innerText = "Crime";
+	menuItem5Container.classList.add("menu__item");
+	menuItem5Container.id = "Crime";
+	// menuItem5.classList.add("menu__item");
+	// menuItem5.id = "Crime";
+	menuItem5.type = "checkbox";
+	menuItem5.name = "genre";
+	menuItem5.value = "Crime";
 
 	sort.classList.add("content-main-block__sort");
 	sort.classList.add("sort");
 	sortText.classList.add("sort__text");
 	sortMenu.classList.add("sort__menu");
+	optionsRealeseDateMax.classList.add("sort__item", "release-date-max");
+	optionsRealeseDateMax.setAttribute("data-order", "asc");
+	optionsRealeseDateMin.classList.add("sort__item", "release-date-min");
+	optionsRealeseDateMin.setAttribute("data-order", "desk");
+	optionsRatingMax.classList.add("sort__item", "rating-max");
+	optionsRatingMax.setAttribute("data-order", "asc");
+	optionsRatingMin.classList.add("sort__item", "rating-min");
+	optionsRatingMin.setAttribute("data-order", "desk");
 	contentMainBlockSubtitle.classList.add("content-main-block__subtitle");
 
 	menuItem1.innerText = "All";
@@ -67,7 +109,14 @@ export const createContent = (container) => {
 	menuItem4.innerText = "Horror";
 	menuItem5.innerText = "Crime";
 	sortText.innerText = "Sort by";
-	sortMenu.innerText = "Release date";
+	optionsRealeseDateMax.innerText = "Release date UP";
+	optionsRealeseDateMax.value = "release_date";
+	optionsRealeseDateMin.innerText = "Release date DOWN";
+	optionsRealeseDateMin.value = "release_date";
+	optionsRatingMax.innerText = "Raiting UP";
+	optionsRatingMax.value = "vote_average";
+	optionsRatingMin.innerText = "Raiting DOWN";
+	optionsRatingMin.value = "vote_average";
 	contentMainBlockSubtitle.append(moviesCountContainer, "movies found");
 
 	container.append(mainBlockContent);
@@ -75,13 +124,23 @@ export const createContent = (container) => {
 	contentMainBlockHeader.append(contentMainBlockMenu);
 	contentMainBlockMenu.append(menuList);
 	menuList.append(menuItem1);
-	menuList.append(menuItem2);
-	menuList.append(menuItem3);
-	menuList.append(menuItem4);
-	menuList.append(menuItem5);
+	// menuList.append(menuItem1Container);
+	// menuItem1Container.append(menuItem1);
+	menuList.append(menuItem2Container);
+	menuItem2Container.append(menuItem2);
+	menuList.append(menuItem3Container);
+	menuItem3Container.append(menuItem3);
+	menuList.append(menuItem4Container);
+	menuItem4Container.append(menuItem4);
+	menuList.append(menuItem5Container);
+	menuItem5Container.append(menuItem5);
 	contentMainBlockHeader.append(sort);
 	sort.append(sortText);
 	sort.append(sortMenu);
+	sortMenu.append(optionsRealeseDateMax);
+	sortMenu.append(optionsRealeseDateMin);
+	sortMenu.append(optionsRatingMax);
+	sortMenu.append(optionsRatingMin);
 	mainBlockContent.append(contentMainBlockSubtitle);
 
 	return mainBlockContent;

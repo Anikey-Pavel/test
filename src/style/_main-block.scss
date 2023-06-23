@@ -286,10 +286,6 @@
 	}
 }
 
-.menu__item.color:hover:nth-child(1):after {
-	background-color: #F65261;
-}
-
 .menu__item {
 	cursor: pointer;
 	font-weight: 500;
@@ -300,7 +296,11 @@
 	position: relative;
 }
 
-.menu__item:hover:nth-child(1):after {
+.menu__item input {
+	display: none;
+}
+
+#All:hover:after {
 	content: "";
 	position: absolute;
 	bottom: -10px;
@@ -312,7 +312,7 @@
 	z-index: 1;
 }
 
-.menu__item:hover:nth-child(2):after {
+#Documentary:hover:after {
 	content: "";
 	position: absolute;
 	bottom: -10px;
@@ -324,7 +324,19 @@
 	z-index: 1;
 }
 
-.menu__item:hover:nth-child(3):after {
+#Documentary:hover:after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	display: block;
+	width: 115px;
+	height: 2px;
+	background-color: #F65261;
+	z-index: 1;
+}
+
+#Comedy:hover:after {
 	content: "";
 	position: absolute;
 	bottom: -10px;
@@ -336,7 +348,7 @@
 	z-index: 1;
 }
 
-.menu__item:hover:nth-child(4):after {
+#Horror:hover:after {
 	content: "";
 	position: absolute;
 	bottom: -10px;
@@ -348,7 +360,7 @@
 	z-index: 1;
 }
 
-.menu__item:hover:nth-child(5):after {
+#Crime:hover:after {
 	content: "";
 	position: absolute;
 	bottom: -10px;
@@ -396,7 +408,6 @@
 }
 
 .sort__text {
-	cursor: pointer;
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 125%;
@@ -420,6 +431,7 @@
 }
 
 .sort__menu {
+	background-color: #232323;
 	cursor: pointer;
 	position: relative;
 	font-weight: 500;
@@ -444,6 +456,8 @@
 	border-top: 7px solid #F65261;
 	border-radius: 1px;
 }
+
+.sort__item {}
 
 @media(max-width: 415px) {
 	.sort__menu::after {

@@ -1,24 +1,17 @@
 import { updateMoviesState } from "../../api";
 
-export const filterDocumntary = () => {
-    updateMoviesState({ filter: "Documentary" });
-};
-
-export const filterComedy = () => {
-    updateMoviesState({ filter: "Comedy" });
-};
-
-export const filterHorror = () => {
-    updateMoviesState({ filter: "Horror" });
-};
-
-export const filterCrime = () => {
-    updateMoviesState({ filter: "Crime" });
-};
-
-export const filterAll = () => {
-    const url = new URL(window.location);
-    url.searchParams.delete("filter");
-    window.history.pushState(null, "movie details", url.toString());
-    updateMoviesState();
+export const sortMovie = (e) => {
+    const target = e.target;
+    if (target.tagName === "SELECT") {
+        const sortByText = target.options[target.selectedIndex].value;
+        const sortOrderText = target.options[target.selectedIndex].dataset.order;
+        console.log(sortOrderText);
+        updateMoviesState({ sortBy: sortByText, sortOrder: sortOrderText });
+    } else {
+        const all = document.querySelector("#All");
+        if (target !== all) {
+            const formData = new FormData(e.currentTarget);
+            updateMoviesState({ filter: formData.getAll("genre") });
+        }
+    }
 };
