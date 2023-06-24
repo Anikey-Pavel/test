@@ -1,5 +1,5 @@
-import { sortMovie } from "../movies/sortMovie";
 import { updateMoviesState } from "../../api";
+import { sortMovie } from "../movies/sortMovie";
 
 export const createContent = (container) => {
 	const mainBlockContent = document.createElement("div");
@@ -96,11 +96,11 @@ export const createContent = (container) => {
 	optionsRealeseDateMax.classList.add("sort__item", "release-date-max");
 	optionsRealeseDateMax.setAttribute("data-order", "asc");
 	optionsRealeseDateMin.classList.add("sort__item", "release-date-min");
-	optionsRealeseDateMin.setAttribute("data-order", "desk");
+	optionsRealeseDateMin.setAttribute("data-order", "desc");
 	optionsRatingMax.classList.add("sort__item", "rating-max");
 	optionsRatingMax.setAttribute("data-order", "asc");
 	optionsRatingMin.classList.add("sort__item", "rating-min");
-	optionsRatingMin.setAttribute("data-order", "desk");
+	optionsRatingMin.setAttribute("data-order", "desc");
 	contentMainBlockSubtitle.classList.add("content-main-block__subtitle");
 
 	menuItem1.innerText = "All";
