@@ -37,3 +37,8 @@ const initApp = () => {
 };
 
 initApp();
+
+export const sum = (a, b) => {
+	if (!a || !b) throw new Error("one of parameters is undefined");
+	return +a + +b;
+};

@@ -1,7 +1,4 @@
-const sum = (a, b) => {
-	if (!a || !b) throw new Error("one of parameters is undefined");
-	return +a + +b;
-};
+import { sum } from "../index";
 
 describe("sum", () => {
 	test("should return sum", () => {
